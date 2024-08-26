@@ -1,2 +1,2 @@
 # wuricong.github.io
-测试静态页面部署
+个人主页（搭建中）
