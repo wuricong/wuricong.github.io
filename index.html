@@ -7,12 +7,44 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" href="./assets/iconfont/iconfont.css">
+<!--  <link rel="stylesheet" href="./assets/svg/snow.svg">-->
 </head>
+<style>
+  .snow {
+    position: absolute;
+    color: #fff;
+  }
+  
+  .snow:after{
+    content: "❄";
+  }
+  
+  @keyframes fall-2 {
+    0% {
+      opacity: 0.9;
+      font-size: 14px;
+      transform: translate(var(--start-x), var(--start-y));
+    }
+    50% {
+      opacity: 0.3;
+      font-size: 16px;
+      transform: translate(var(--middle-x), var(--middle-y));
+    }
+    
+    100% {
+      font-size: 20px;
+      opacity: 0.3;
+      transform: translate(var(--end-x), var(--end-y));
+    }
+  }
+</style>
 <body>
 <div>
-  <h1 style="text-align: center;margin-bottom: 12px">个人主页</h1>
+  <h1 style="text-align: center;margin-bottom: 12px;">个人主页</h1>
   <h2>欲买桂花同载酒，终不似，少年游</h2>
   <h2>拉动经济的三驾马车：投资，消费，出口</h2>
+  <div class="container" style="position: absolute;width: 100vw;height: 100vh;top: 0;"></div>
   <div>
     <ul>
       <li>1</li>
@@ -25,4 +57,57 @@
 </div>
 
 </body>
+
+<script>
+  const point_num = 15 // 动画点的数量
+  const container = document.querySelector('.container')
+  
+  // 随机生成范围内的值
+  function random(min,max) {
+    if(min&&max){
+      return (Math.random()*(max-min)+min).toFixed(1)
+    }
+    return Math.random() * 100
+  }
+  
+  function calcX(num) {
+    if(num+10>100){
+      return num -Math.random()+ 5
+    }
+    
+    return num + Math.random()+5
+  }
+  
+ function loadSvg(){
+ 
+ }
+  
+  function createPoint(val){
+  const div = document.createElement('div')
+    let start_x = random()
+    let middle_x =calcX(start_x)
+    let end_x = calcX(middle_x)
+    let start_y = 0
+    let middle_y = 50
+    let end_y = 100
+    div.style.setProperty('--start-x',start_x+'vw')
+    div.style.setProperty('--middle-x',middle_x+'vw')
+    div.style.setProperty('--end-x',end_x + 'vw')
+    div.style.setProperty('--start-y',start_y+'vh')
+    div.style.setProperty('--middle-y',middle_y+'vh')
+    div.style.setProperty('--end-y',end_y + 'vh')
+    div.style.animation = `fall-2 ${random(8,20)}s -10s linear infinite`
+    // div.classList.add('iconfont icon-xuehua point')
+    div.className = 'snow'
+    container.appendChild(div)
+  }
+  
+  for(let i = 1;i<=point_num;i++){
+    createPoint(i)
+  }
+  
+  loadSvg()
+  
+  
+</script>
 </html>

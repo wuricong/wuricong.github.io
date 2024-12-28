@@ -11,12 +11,7 @@ body {
     position: relative;
     background-image: url("/assets/header-bg.jpg");
     background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
-}
-
-body {
-    background-size: 60px 60px;
 }
 
 h2{
