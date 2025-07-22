@@ -63,7 +63,9 @@
   const point_num = 15 // 动画点的数量
   const container = document.querySelector('.container')
   const viewBtn = document.querySelector('.view-btn')
-  
+  viewBtn.addEventListener('click',()=>{
+    document.body.style.backgroundImage = "url('./assets/letter.png')"
+  })
   
   // 随机生成范围内的值
   function random(min,max) {
