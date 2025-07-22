@@ -45,7 +45,7 @@
   <h2>欲买桂花同载酒，终不似，少年游</h2>
   <h2>拉动经济的三驾马车：投资，消费，出口</h2>
   <div class="container" style="position: absolute;width: 100vw;height: 100vh;top: 0;"></div>
-  <div>
+  <div class="card">
     <ul>
       <li>1</li>
       <li>2</li>
@@ -54,13 +54,16 @@
       <li>5</li>
     </ul>
   </div>
+  <button class="view-btn">切换</button>
 </div>
 
 </body>
 
-<script>
+<script type="module">
   const point_num = 15 // 动画点的数量
   const container = document.querySelector('.container')
+  const viewBtn = document.querySelector('.view-btn')
+  
   
   // 随机生成范围内的值
   function random(min,max) {
